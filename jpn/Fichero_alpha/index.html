@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fichero</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+	<div class="container">
+
+		<div class="grpUp entrada">
+
+			<div>
+				<h1>Agrega una ficha</h1>
+				<form id="frm1" enctype="multipart/form-data">
+					<input type="text" name="txtEsp" placeholder="término en Español" required>
+					<input type="text" name="txtJap" placeholder="término en Japonés" required>
+					<input type="file" name="fulImg" accept="image/*"><br>
+					<button id="btnAdd">AGREGAR</button>
+				</form>
+			</div>
+
+			<div>
+				<div class="ficha">
+					<div><img id="img1" width="100" height="100"></div>
+					<div><label id="lblJap">término en Japonés</label></div>
+				</div>
+			</div>
+
+		</div>
+			
+		<div class="grpDown">
+			<h1>Total de fichas: <label id="lblCant"></label></h1>
+			<progress id="prg" value="0" max="600"></progress>
+			<br>
+			<button id="btn2">PRACTICAR</button>
+		</div>
+		
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="funciones.js"></script>
+<script type="text/javascript" src="main.js"></script>

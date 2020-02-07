@@ -1,0 +1,70 @@
+html,body{
+			height: 100%;
+			margin: 0px;
+			font-size: 40px;
+			text-align: center;
+		}
+		k{
+			display: inline-block;
+			cursor: pointer;
+			border: 1px solid white;
+			border-radius: 10px;
+		}
+		k:hover{
+			border-color: #E74C3C;
+		}
+		f{
+			text-align: center;
+			user-select: none;
+			display: block;
+			font-size: 50%;
+			font-weight: bold;
+			margin-bottom: -15%;
+			color: #9B59B6;
+		}
+		h{
+			display: inline-block;
+		}
+		v{
+			color: #27AE60;
+			display: inline-block;
+		}
+		c{
+			color: #3498DB;
+			display: inline-block;
+		}
+		r{
+			color: #E74C3C;
+			display: inline-block;
+		}
+		x{
+			border: 1px dotted gray;
+			border-radius: 10px;
+			font-size: 39px;
+		}
+		e{
+			user-select: none;
+			display: inline-block;
+		}
+		adj{
+			color: #F39C12;
+			display: inline-block;
+		}
+		p{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		table{
+			border-bottom: 1px solid gray;
+		}
+		td{
+			font-family: "游明朝";
+			padding-right: 40px;
+			font-weight: bold;
+			text-align: left;
+			border-left: 2px dotted gray;
+
+		}
+		th{
+			font-size: 25px;
+		}

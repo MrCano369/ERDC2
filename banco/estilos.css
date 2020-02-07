@@ -1,0 +1,95 @@
+html, body{
+	height: 100%;
+	margin: 0rem;
+}
+
+.container{
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 30% auto;
+	grid-template-areas: ". header header ." "right right left left";
+}
+
+.i{
+	background-color: #bbb;
+	border-radius: 25px;
+	margin: 0.5rem;
+	border: 1rem solid gray;
+}
+.h{
+	grid-area: header;
+	text-align: center;
+}
+.r{
+	grid-area: right;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.r div{
+	margin: 3rem;
+}
+.l{
+	grid-area: left;
+	overflow: auto;
+}
+.retirar{
+	display: none;
+}
+.depositar{
+}
+button{
+	cursor: pointer;
+}
+input{
+	color: white;
+	border-style: none;
+	outline: none;
+	text-align: center;
+	background-color: transparent;
+	border-bottom: 2px solid gray;
+	border-radius: 20px;
+	font-size: 20px;
+	margin: 0.5rem;
+	width: 30%;
+	cursor: pointer;
+}
+input:focus{
+	background-color: #ddd;
+}
+
+input:hover{
+	background-color: #ddd;
+}
+input:required:valid{
+	background-color: #82E0AA;
+}
+
+h3{
+	margin: 0.5rem;
+}
+
+button{
+	width: 25%;
+	border-style: none;
+	outline: none;
+	background-color: #28B463;
+	color: white;
+	border-radius: 10px;
+	font-size: 20px;
+	border-bottom: 2px solid gray;
+	padding: 10px;
+}
+button:hover{
+	background-color: #2ECC71;
+}
+button:active{
+	background-color: #F4D03F;
+}
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+th, td{
+	border: 1px solid gray;
+}

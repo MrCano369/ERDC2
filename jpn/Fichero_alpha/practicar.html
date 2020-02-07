@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+	<div class="container">
+		<div class="grpUp">
+			<h1>Fichero de estudio</h1>
+			<table align="center">
+				<tr>
+					<td><p>0/20</p><progress id="prg0" value="0" max="20"></progress></td>
+					<td><p>0/40</p><progress id="prg1" value="0" max="40"></progress></td>
+					<td><p>0/100</p><progress id="prg2" value="0" max="100"></progress></td>
+					<td><p>0/160</p><progress id="prg3" value="0" max="160"></progress></td>
+					<td><p>0/280</p><progress id="prg4" value="0" max="280"></progress></td>
+				</tr>
+			</table>
+		</div>
+		<div class="grpDown">
+			<div class="ficha" id="ficha">
+				<div><img id="img1" width="100" height="100"></div>
+				<div><label id="lblJap"></label></div>
+			</div>
+			<button id="btnComenzar">COMENZAR</button>
+			<button id="btnVer">Ver respuesta</button>
+			<button id="btnNo">Nop :/</button>
+			<button id="btnSi">Sip :)</button>
+			<a href="index.html"><button id="btnVolver">Regresar</button></a>
+		</div>
+	</div>
+	
+</body>
+</html>
+<script type="text/javascript" src="clases.js"></script>
+<script type="text/javascript" src="funciones.js"></script>
+<script type="text/javascript">
+var colas = [new Cola(20), new Cola(40), new Cola(100), new Cola(160), new Cola(280)];
+var a = 0;
+var vistas = 0;
+var fichaA;
+
+window.addEventListener('load', () => {
+	fetch('consultar2.php')
+	.then( r => r.json() )
+	.then( data => {
+		console.log(data);
+
+		data.forEach( v => {
+			colas[v.seccion].push(new Ficha(v.id, v.esp, v.jap, v.img));
+		});
+
+		colas.forEach( (v, i) => {
+			cambiarPrg(i, v.length());
+			if (v.isFull()){a = i;}
+		});
+	})
+	.catch( e => console.error(e) );
+});
+
+function mostrar() {
+	fichaA = colas[a].pop();
+	img1.src = fichaA.img;
+	lblJap.innerText = fichaA.esp;
+}
+
+btnComenzar.addEventListener('click', () => {
+	btnComenzar.style.display = "none";
+	ficha.style.display = "block";
+	btnVer.style.display = "inline";
+	lblJap.style.display = "inline";
+	mostrar();
+});
+
+btnVer.addEventListener('click', () => {
+	btnVer.style.display = "none";
+	btnSi.style.display = "inline";
+	btnNo.style.display = "inline";
+	lblJap.innerHTML = toFurigana(fichaA.jap);
+});
+
+btnNo.addEventListener('click', () => {
+	btnSi.style.display = "none";
+	btnNo.style.display = "none";
+
+	cambiarPrg(a, -1);
+	colas[0].push(fichaA);
+	cambiarPrg(0, 1);
+
+	fetch('atrasar.php', {
+		method: 'POST',
+		headers: {'Content-Type':'application/x-www-form-urlencoded'},
+		body: "id="+fichaA.ide
+	}).then( r => r.text()).then( data => console.log(data)).catch( e => console.log(e));
+
+	vistas++;
+	if (vistas < 20) {
+		btnVer.style.display = "inline";
+		mostrar();
+	}else{
+		ficha.style.display = "none";
+		btnVolver.style.display = "inline";
+	}
+});
+
+btnSi.addEventListener('click', () => {
+	btnSi.style.display = "none";
+	btnNo.style.display = "none";
+	
+	cambiarPrg(a, -1);
+	a++;
+
+	if (a < colas.length) {
+		colas[a].push(fichaA);
+		cambiarPrg(a, 1);
+		if (!colas[a].isFull()){
+			a--;
+		}
+	}
+
+	fetch('aumentar.php', {
+		method: 'POST',
+		headers: {'Content-Type':'application/x-www-form-urlencoded'},
+		body: "id="+fichaA.ide
+	}).then( r => r.text()).then( data => console.log(data)).catch( e => console.log(e));
+
+	vistas++;
+	if (vistas < 20) {
+		btnVer.style.display = "inline";
+		mostrar();
+	}else{
+		ficha.style.display = "none";
+		btnVolver.style.display = "inline";
+	}
+});
+
+</script>

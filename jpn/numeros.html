@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		html, input, button{
+			font-size: 30px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div id="num"></div>
+		<input type="text" id="h">
+		<input type="text" readonly id="kanji"><br><br>
+		<button id="btnView">Ver</button>
+		<button id="btnNew">Nuevo</button>
+	</center>
+</body>
+</html>
+<script type="text/javascript">
+	
+	var n = ['','一','二','三','四','五','六','七','八','九'];
+	var k = ['','十','百','千','万','十','百'];
+
+function jp(num) {
+	num = num.toString();
+	num = invertir(num);
+	var s = '';
+	for (var i = 0; i < num.length; i++) {
+		if (num.charAt(i) != '0' || i==4) {
+			s +=  k[i];
+			if (!(i!=0 && i!=4) || num.charAt(i)!='1') {
+				s += n[num.charAt(i)];
+			}
+		}
+	}
+	s = invertir(s);
+	return s;
+}
+
+function invertir(cadena) {
+  var x = cadena.length;
+  var cadenaInvertida = "";
+ 
+  while (x>=0) {
+    cadenaInvertida += cadena.charAt(x);
+    x--;
+  }
+  return cadenaInvertida;
+}
+
+var r;
+
+btnNew.addEventListener('click', () => {
+	r = nRand(1, h.value);
+	num.innerText = r;
+});
+
+btnView.addEventListener('click', () => {
+	kanji.value = jp(r);
+});
+
+function nRand(min, max) {
+	return Math.trunc(Math.random()*(max - min + 1)) + min;
+}
+
+</script>

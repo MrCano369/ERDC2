@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Banco</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div class="container">
+		<div class="i h">
+			<div class="depositar">
+				<form id="depositar">
+					<h3>DEPOSITAR o RETIRAR</h3>
+					<input type="number" id="cantidadDeposito" autofocus placeholder="Cantidad" required>
+					<input type="text" id="descripcionDeposito" placeholder="Descripción" required>
+					<br>
+					<button>Agregar</button>
+				</form>
+			</div>
+		</div>
+		<div class="i r">
+			<div>
+				<h1>Hoy:</h1>
+				<h1>Esta Semana:</h1>
+				<h1>Este Mes:</h1>
+				<h1>Este Año:</h1>
+				<h1>Total:</h1>
+			</div>
+			
+			<div>
+				<h1>0</h1>
+				<h1>0</h1>
+				<h1>0</h1>
+				<h1>0</h1>
+				<h1>0</h1>
+			</div>
+		</div>
+		<div class="i l">
+			<table>
+				<thead>
+					<tr><th width="20%">Cantidad</th><th width="60%">Descripción</th><th>Fecha</th></tr>
+				</thead>
+				<tbody id="lista"></tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="main.js"></script>

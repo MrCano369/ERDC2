@@ -1,0 +1,88 @@
+html, body{
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+progress{height: 50px;}
+p{margin: 0px;}
+div{text-align: center;}
+img{margin-top: 20px;}
+button{
+	margin-top: 10px;
+	border-style: none;
+	outline: none;
+	cursor: pointer;
+	padding: 20px;
+	border-radius: 10px;
+	color: white;
+	font-weight: bold;
+}
+input{
+	margin-top: 10px;
+	outline: none;
+	width: 100%;
+}
+input[type=text]{
+	font-size: 25px;
+	border-style: none;
+	border-bottom: 1px solid gray;
+}
+input[type=text]:focus{background-color: #ddd;}
+
+.container{
+	height: 100%;
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-template-areas:
+	". up ."
+	". down .";
+}
+.grpUp{grid-area: up;}
+.grpDown{grid-area: down;}
+.entrada{
+	display: grid;
+	grid-gap: 10px;
+	align-items: center;
+	grid-template-columns: 1fr 1fr;
+}
+.ficha{
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	text-align: center;
+	width: 420px;
+	height: 280px;
+	border: 5px solid black;
+}
+#ficha{
+	margin: auto;
+	display: none;
+}
+#lblJap{
+	font-size: 50px;
+	font-family: "游明朝";
+	line-height: 100%;
+}
+#btnAdd{background-color: #2ECC71;}
+#btn2{background-color: #5DADE2;}
+#btnComenzar{background-color: #5DADE2;}
+#btnVer{background-color: #5DADE2;display: none;}
+#btnNo{background-color: #E74C3C;display: none;}
+#btnSi{background-color: #2ECC71;display: none;}
+#btnVolver{background-color: #5DADE2;display: none;}
+
+
+#prg{width: 600px;}
+#prg0{width: 20px;transform: rotate(180deg);}
+#prg1{width: 40px;transform: rotate(180deg);}
+#prg2{width: 100px;transform: rotate(180deg);}
+#prg3{width: 160px;transform: rotate(180deg);}
+#prg4{width: 280px;transform: rotate(180deg);}
+f, w, k{display: inline-block;}
+h{
+	user-select: none;
+	display: table-row-group;
+	line-height: 100%;
+	text-align: center;
+	font-size: 50%;
+	display: block;
+}
